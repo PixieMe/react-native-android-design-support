@@ -57,6 +57,12 @@ public class ReactTextInputLayoutManager extends ViewGroupManager<TextInputLayou
   public void setCounterMaxLength(TextInputLayout view, @Nullable int counterMaxLength) {
     view.setCounterMaxLength(counterMaxLength);
   }
+
+  @ReactProp(name = "passwordVisibilityToggleEnabled")
+  public void setPasswordVisibilityToggleEnabled(TextInputLayout view, boolean toggleEnabled) {
+    view.setPasswordVisibilityToggleEnabled(toggleEnabled);
+  }
+
   @Override
   public void addView(final TextInputLayout parent, View child, int index)
   {
