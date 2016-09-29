@@ -57,4 +57,23 @@ public class ReactTextInputLayoutManager extends ViewGroupManager<TextInputLayou
   public void setCounterMaxLength(TextInputLayout view, @Nullable int counterMaxLength) {
     view.setCounterMaxLength(counterMaxLength);
   }
+  @Override
+  public void addView(final TextInputLayout parent, View child, int index)
+  {
+    super.addView(parent, child, index);
+
+    // get the indicator layout
+    View possibleIndicatorLayout = parent.getChildAt(1);
+    if (possibleIndicatorLayout instanceof ViewGroup)
+    {
+      ViewGroup indicatorLayout = (ViewGroup) possibleIndicatorLayout;
+
+      View possibleCounterText = indicatorLayout.getChildAt(indicatorLayout.getChildCount() - 1);
+      if (possibleCounterText instanceof TextView)
+      {
+        possibleCounterText.setMinimumWidth(256);
+        ((TextView) possibleCounterText).setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT | Gravity.END);
+      }
+    }
+  }
 }
