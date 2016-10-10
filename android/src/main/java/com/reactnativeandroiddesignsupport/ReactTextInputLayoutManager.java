@@ -1,14 +1,16 @@
 package com.reactnativeandroiddesignsupport;
 
-import javax.annotation.Nullable;
-
+import android.support.design.widget.TextInputLayout;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.design.widget.TextInputLayout;
+import android.widget.TextView;
 
+import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.facebook.react.uimanager.ThemedReactContext;
+
+import javax.annotation.Nullable;
 
 public class ReactTextInputLayoutManager extends ViewGroupManager<TextInputLayout> {
 
@@ -20,11 +22,12 @@ public class ReactTextInputLayoutManager extends ViewGroupManager<TextInputLayou
   @Override
   public TextInputLayout createViewInstance(ThemedReactContext context) {
     TextInputLayout textInputLayout = new TextInputLayout(context);
-    textInputLayout.setHintAnimationEnabled(true);
     return textInputLayout;
   }
 
-  public boolean needsCustomLayoutForChildren() {
+  @Override
+  public boolean needsCustomLayoutForChildren()
+  {
     return true;
   }
 
@@ -54,7 +57,7 @@ public class ReactTextInputLayoutManager extends ViewGroupManager<TextInputLayou
   }
 
   @ReactProp(name = "counterMaxLength")
-  public void setCounterMaxLength(TextInputLayout view, @Nullable int counterMaxLength) {
+  public void setCounterMaxLength(TextInputLayout view, int counterMaxLength) {
     view.setCounterMaxLength(counterMaxLength);
   }
 
