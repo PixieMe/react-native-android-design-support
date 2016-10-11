@@ -1,14 +1,16 @@
 package com.reactnativeandroiddesignsupport;
 
-import javax.annotation.Nullable;
-
+import android.support.design.widget.TextInputLayout;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.design.widget.TextInputLayout;
+import android.widget.TextView;
 
+import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.facebook.react.uimanager.ThemedReactContext;
+
+import javax.annotation.Nullable;
 
 public class ReactTextInputLayoutManager extends ViewGroupManager<TextInputLayout> {
 
@@ -20,11 +22,12 @@ public class ReactTextInputLayoutManager extends ViewGroupManager<TextInputLayou
   @Override
   public TextInputLayout createViewInstance(ThemedReactContext context) {
     TextInputLayout textInputLayout = new TextInputLayout(context);
-    textInputLayout.setHintAnimationEnabled(true);
     return textInputLayout;
   }
 
-  public boolean needsCustomLayoutForChildren() {
+  @Override
+  public boolean needsCustomLayoutForChildren()
+  {
     return true;
   }
 
@@ -54,7 +57,32 @@ public class ReactTextInputLayoutManager extends ViewGroupManager<TextInputLayou
   }
 
   @ReactProp(name = "counterMaxLength")
-  public void setCounterMaxLength(TextInputLayout view, @Nullable int counterMaxLength) {
+  public void setCounterMaxLength(TextInputLayout view, int counterMaxLength) {
     view.setCounterMaxLength(counterMaxLength);
+  }
+
+  @ReactProp(name = "passwordVisibilityToggleEnabled")
+  public void setPasswordVisibilityToggleEnabled(TextInputLayout view, boolean toggleEnabled) {
+    view.setPasswordVisibilityToggleEnabled(toggleEnabled);
+  }
+
+  @Override
+  public void addView(final TextInputLayout parent, View child, int index)
+  {
+    super.addView(parent, child, index);
+
+    // get the indicator layout
+    View possibleIndicatorLayout = parent.getChildAt(1);
+    if (possibleIndicatorLayout instanceof ViewGroup)
+    {
+      ViewGroup indicatorLayout = (ViewGroup) possibleIndicatorLayout;
+
+      View possibleCounterText = indicatorLayout.getChildAt(indicatorLayout.getChildCount() - 1);
+      if (possibleCounterText instanceof TextView)
+      {
+        possibleCounterText.setMinimumWidth(256);
+        ((TextView) possibleCounterText).setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT | Gravity.END);
+      }
+    }
   }
 }
