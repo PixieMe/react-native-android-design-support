@@ -34,7 +34,8 @@ public class DesignSupportPackage implements ReactPackage {
       new ReactNestedScrollViewManager(),
       new ReactAppBarLayoutManager(),
       new ReactCoordinatorLayoutManager(),
-      new ReactTabLayoutManager()
+      new ReactTabLayoutManager(),
+      new ReactFloatingActionButtonManager()
     );
   }
 }
