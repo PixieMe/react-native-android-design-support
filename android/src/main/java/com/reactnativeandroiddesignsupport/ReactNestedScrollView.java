@@ -14,29 +14,28 @@ package com.reactnativeandroiddesignsupport;
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v4.widget.ScrollerCompat;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.OverScroller;
 
 import com.facebook.infer.annotation.Assertions;
+import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.common.ReactConstants;
 import com.facebook.react.uimanager.MeasureSpecAssertions;
+import com.facebook.react.uimanager.ReactClippingViewGroup;
+import com.facebook.react.uimanager.ReactClippingViewGroupHelper;
 import com.facebook.react.uimanager.events.NativeGestureUtil;
 import com.facebook.react.views.scroll.FpsListener;
 import com.facebook.react.views.scroll.OnScrollDispatchHelper;
 import com.facebook.react.views.scroll.ReactScrollViewHelper;
-import com.facebook.react.views.view.ReactClippingViewGroup;
-import com.facebook.react.views.view.ReactClippingViewGroupHelper;
 
 import java.lang.reflect.Field;
 
@@ -55,7 +54,7 @@ public class ReactNestedScrollView extends NestedScrollView implements ReactClip
   private static boolean sTriedToGetScrollerField = false;
 
   private final OnScrollDispatchHelper mOnScrollDispatchHelper = new OnScrollDispatchHelper();
-  private final ScrollerCompat mScroller;
+  private final OverScroller mScroller;
 
   private @Nullable Rect mClippingRect;
   private boolean mDoneFlinging;
@@ -70,11 +69,11 @@ public class ReactNestedScrollView extends NestedScrollView implements ReactClip
   private @Nullable Drawable mEndBackground;
   private int mEndFillColor = Color.TRANSPARENT;
 
-  public ReactNestedScrollView(Context context) {
+  public ReactNestedScrollView(ReactContext context) {
     this(context, null);
   }
 
-  public ReactNestedScrollView(Context context, @Nullable FpsListener fpsListener) {
+  public ReactNestedScrollView(ReactContext context, @Nullable FpsListener fpsListener) {
     super(context);
     mFpsListener = fpsListener;
 
@@ -93,7 +92,16 @@ public class ReactNestedScrollView extends NestedScrollView implements ReactClip
 
     if (sScrollerField != null) {
       try {
-        mScroller = (ScrollerCompat) sScrollerField.get(this);
+        Object scroller = sScrollerField.get(this);
+        if (scroller instanceof OverScroller) {
+          mScroller = (OverScroller) scroller;
+        } else {
+          Log.w(
+            ReactConstants.TAG,
+            "Failed to cast mScroller field in ScrollView (probably due to OEM changes to AOSP)! " +
+              "This app will exhibit the bounce-back scrolling bug :(");
+          mScroller = null;
+        }
       } catch (IllegalAccessException e) {
         throw new RuntimeException("Failed to get mScroller from ScrollView!", e);
       }
