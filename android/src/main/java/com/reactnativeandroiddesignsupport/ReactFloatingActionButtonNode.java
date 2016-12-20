@@ -24,7 +24,7 @@ public class ReactFloatingActionButtonNode extends LayoutShadowNode implements C
 	}
 
 	@Override
-	public void measure(CSSNodeAPI node, float width, CSSMeasureMode widthMode, float height, CSSMeasureMode heightMode, MeasureOutput measureOutput)
+	public long measure(CSSNodeAPI node, float width, CSSMeasureMode widthMode, float height, CSSMeasureMode heightMode)
 	{
 		if (!mMeasured)
 		{
@@ -35,7 +35,7 @@ public class ReactFloatingActionButtonNode extends LayoutShadowNode implements C
 			mHeight = nodeView.getMeasuredHeight();
 			mMeasured = true;
 		}
-		measureOutput.width = mWidth;
-		measureOutput.height = mHeight;
+
+		return MeasureOutput.make(mWidth, mHeight);
 	}
 }
