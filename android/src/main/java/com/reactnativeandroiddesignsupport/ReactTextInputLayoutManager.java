@@ -28,7 +28,7 @@ public class ReactTextInputLayoutManager extends ViewGroupManager<TextInputLayou
   @Override
   public boolean needsCustomLayoutForChildren()
   {
-    return true;
+    return false;
   }
 
   @ReactProp(name = "hint")
