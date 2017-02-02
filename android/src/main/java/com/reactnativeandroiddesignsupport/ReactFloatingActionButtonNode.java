@@ -4,15 +4,16 @@ import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.facebook.csslayout.CSSMeasureMode;
-import com.facebook.csslayout.CSSNodeAPI;
-import com.facebook.csslayout.MeasureOutput;
 import com.facebook.react.uimanager.LayoutShadowNode;
+import com.facebook.yoga.YogaMeasureFunction;
+import com.facebook.yoga.YogaMeasureMode;
+import com.facebook.yoga.YogaMeasureOutput;
+import com.facebook.yoga.YogaNodeAPI;
 
 /**
  * Created by tim on 13/10/2016.
  */
-public class ReactFloatingActionButtonNode extends LayoutShadowNode implements CSSNodeAPI.MeasureFunction
+public class ReactFloatingActionButtonNode extends LayoutShadowNode implements YogaMeasureFunction
 {
 	private int mWidth;
 	private int mHeight;
@@ -24,7 +25,7 @@ public class ReactFloatingActionButtonNode extends LayoutShadowNode implements C
 	}
 
 	@Override
-	public long measure(CSSNodeAPI node, float width, CSSMeasureMode widthMode, float height, CSSMeasureMode heightMode)
+	public long measure(YogaNodeAPI node, float width, YogaMeasureMode widthMode, float height, YogaMeasureMode heightMode)
 	{
 		if (!mMeasured)
 		{
@@ -36,6 +37,6 @@ public class ReactFloatingActionButtonNode extends LayoutShadowNode implements C
 			mMeasured = true;
 		}
 
-		return MeasureOutput.make(mWidth, mHeight);
+		return YogaMeasureOutput.make(mWidth, mHeight);
 	}
 }
