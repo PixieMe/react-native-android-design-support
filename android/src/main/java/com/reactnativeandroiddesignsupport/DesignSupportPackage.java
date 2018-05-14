@@ -26,7 +26,6 @@ public class DesignSupportPackage implements ReactPackage {
   public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
     return Arrays.<ViewManager>asList(
       new ReactTextInputLayoutManager(),
-      new ReactNestedScrollViewManager(),
       new ReactAppBarLayoutManager(),
       new ReactCoordinatorLayoutManager(),
       new ReactTabLayoutManager(),
