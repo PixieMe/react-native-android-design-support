@@ -1,5 +1,4 @@
 module.exports = {
-  NestedScrollViewAndroid: require('./lib/NestedScrollViewAndroid'),
   // SnackbarAndroid: require('./lib/SnackbarAndroid'),
   TextInputLayoutAndroid: require('./lib/TextInputLayoutAndroid'),
   TabLayoutAndroid: require('./lib/TabLayoutAndroid'),
