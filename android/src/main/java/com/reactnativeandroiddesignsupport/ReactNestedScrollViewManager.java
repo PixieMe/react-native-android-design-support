@@ -139,6 +139,20 @@ public class ReactNestedScrollViewManager
   }
 
   @Override
+   public void scrollToEnd(
+       ReactNestedScrollView scrollView,
+       ReactScrollViewCommandHelper.ScrollToEndCommandData data) {
+    // ScrollView always has one child - the scrollable area
+    int right =
+       scrollView.getChildAt(0).getWidth() + scrollView.getPaddingRight();
+    if (data.mAnimated) {
+      scrollView.smoothScrollTo(right, scrollView.getScrollY());
+    } else {
+      scrollView.scrollTo(right, scrollView.getScrollY());
+    }
+  }
+
+  @Override
   public @Nullable Map getExportedCustomDirectEventTypeConstants() {
     return createExportedCustomDirectEventTypeConstants();
   }
