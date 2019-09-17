@@ -1,6 +1,5 @@
 package com.reactnativeandroiddesignsupport;
 
-import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.view.ViewGroup;
 import com.facebook.react.uimanager.LayoutShadowNode;
@@ -8,6 +7,7 @@ import com.facebook.yoga.YogaMeasureFunction;
 import com.facebook.yoga.YogaMeasureMode;
 import com.facebook.yoga.YogaMeasureOutput;
 import com.facebook.yoga.YogaNode;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * Created by tim on 13/10/2016.

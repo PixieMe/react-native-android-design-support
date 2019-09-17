@@ -4,8 +4,6 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 import android.view.View;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.AppBarLayout;
 
 import com.facebook.infer.annotation.Assertions;
 import com.facebook.react.bridge.ReadableArray;
@@ -15,6 +13,7 @@ import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.uimanager.ThemedReactContext;
+import com.google.android.material.appbar.AppBarLayout;
 
 public class ReactAppBarLayoutManager extends ViewGroupManager<AppBarLayout> {
 

@@ -4,8 +4,6 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 import android.view.View;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 
 import com.facebook.infer.annotation.Assertions;
 import com.facebook.react.bridge.ReadableArray;
@@ -15,8 +13,11 @@ import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.uimanager.ThemedReactContext;
+import com.google.android.material.tabs.TabLayout;
 
 import android.util.Log;
+
+import androidx.viewpager.widget.ViewPager;
 
 
 public class ReactTabLayoutManager extends ViewGroupManager<TabLayout> {

@@ -2,8 +2,9 @@ package com.reactnativeandroiddesignsupport;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.support.annotation.Nullable;
 import android.view.View;
+
+import androidx.annotation.Nullable;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;

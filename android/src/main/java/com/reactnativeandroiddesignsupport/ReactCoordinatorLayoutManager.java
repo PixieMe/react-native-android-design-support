@@ -1,13 +1,14 @@
 package com.reactnativeandroiddesignsupport;
 
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
+import com.google.android.material.appbar.AppBarLayout;
 
 public class ReactCoordinatorLayoutManager extends ViewGroupManager<CoordinatorLayout>
 {

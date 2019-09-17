@@ -3,7 +3,6 @@ package com.reactnativeandroiddesignsupport;
 import android.content.res.AssetManager;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
-import android.support.design.widget.TextInputLayout;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -14,6 +13,7 @@ import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.views.text.ReactFontManager;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

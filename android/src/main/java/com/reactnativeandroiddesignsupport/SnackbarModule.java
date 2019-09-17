@@ -11,11 +11,11 @@ import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import android.support.design.widget.Snackbar;
 
 public class SnackbarModule extends ReactContextBaseJavaModule {
   public Activity mActivity = null;

@@ -4,8 +4,8 @@ import android.content.Context;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
+
+import androidx.annotation.Nullable;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.controller.BaseControllerListener;
@@ -19,6 +19,7 @@ import com.facebook.imagepipeline.image.QualityInfo;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.uimanager.PixelUtil;
 import com.facebook.react.views.toolbar.DrawableWithIntrinsicSize;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * Created by tim on 13/10/2016.
